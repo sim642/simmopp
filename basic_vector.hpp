@@ -34,7 +34,7 @@ public:
     template<size_t I_, size_t... Is_>
     auto& operator =(const basic_swizzle<V, I_, Is_...> &other)
     {
-        auto copy = array;
+        auto copy = other.array;
 
         array[I] = copy[I_];
         int dummy[sizeof...(Is)] = { (array[Is] = copy[Is_], 0)... };
@@ -102,6 +102,13 @@ public:
     BASIC_VECTOR_SWIZZLE(zx, 2, 0);
     BASIC_VECTOR_SWIZZLE(yz, 1, 2);
     BASIC_VECTOR_SWIZZLE(zy, 2, 1);
+
+    BASIC_VECTOR_SWIZZLE(xyz, 0, 1, 2);
+    BASIC_VECTOR_SWIZZLE(xzy, 0, 2, 1);
+    BASIC_VECTOR_SWIZZLE(yxz, 1, 0, 2);
+    BASIC_VECTOR_SWIZZLE(yzx, 1, 2, 0);
+    BASIC_VECTOR_SWIZZLE(zxy, 2, 0, 1);
+    BASIC_VECTOR_SWIZZLE(zyz, 2, 1, 0);
 
 #undef BASIC_VECTOR_SWIZZLE
 };

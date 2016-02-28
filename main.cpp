@@ -21,6 +21,8 @@ int main()
     cout << b << endl;
     b.zy() = b.xz();
     cout << b << endl;
+    b.yzx() = a.zxy();
+    cout << b << endl;
 
     Vec1d v = {5};
     Vec1d u = v.x();
