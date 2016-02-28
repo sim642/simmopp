@@ -5,6 +5,7 @@
 #ifndef SIMMOPP_BASIC_VECTOR_HPP
 #define SIMMOPP_BASIC_VECTOR_HPP
 
+#include "utility.hpp"
 #include <array>
 #include <type_traits>
 
@@ -40,7 +41,7 @@ public:
         auto copy = other.array;
 
         array[I] = copy[I_];
-        int dummy[sizeof...(Is)] = { (array[Is] = copy[Is_], 0)... };
+        SIMMO_PARAMETER_PACK_APPLY(array[Is] = copy[Is_]);
 
         return *this;
     };
