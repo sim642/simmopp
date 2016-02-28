@@ -3,6 +3,7 @@
 
 using namespace std;
 
+typedef basic_vector<double, 1> Vec1d;
 typedef basic_vector<double, 2> Vec2d;
 typedef basic_vector<double, 3> Vec3d;
 
@@ -20,6 +21,10 @@ int main()
     cout << b << endl;
     b.zy() = b.xz();
     cout << b << endl;
+
+    Vec1d v = {5};
+    Vec1d u = v.x();
+    cout << u << endl;
 
     return 0;
 }

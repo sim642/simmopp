@@ -50,6 +50,19 @@ public:
     array_t &array;
 };
 
+template<size_t N, size_t I, size_t... Is>
+struct indices_pack
+{
+    static constexpr size_t other_max = indices_pack<N, Is...>::max;
+    static constexpr size_t max = I > other_max ? I : other_max;
+};
+
+template<size_t N, size_t I>
+struct indices_pack<N, I>
+{
+    static constexpr size_t max = I;
+};
+
 template<typename T, size_t N>
 class basic_vector
 {
@@ -76,12 +89,12 @@ public:
 #define BASIC_VECTOR_SWIZZLE(name, ...) \
     auto name() \
     { \
-        return basic_swizzle<this_t, __VA_ARGS__>(*this); \
+        return std::enable_if_t<indices_pack<N, __VA_ARGS__>::max < N, basic_swizzle<this_t, __VA_ARGS__>>(*this); \
     }
 
     BASIC_VECTOR_SWIZZLE(x, 0);
-    BASIC_VECTOR_SWIZZLE(y, 0);
-    BASIC_VECTOR_SWIZZLE(z, 0);
+    BASIC_VECTOR_SWIZZLE(y, 1);
+    BASIC_VECTOR_SWIZZLE(z, 2);
 
     BASIC_VECTOR_SWIZZLE(xy, 0, 1);
     BASIC_VECTOR_SWIZZLE(yx, 1, 0);
