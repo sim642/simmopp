@@ -18,6 +18,7 @@ class basic_swizzle
 public:
     typedef typename V::array_t array_t;
     typedef typename V::template resize_t<1 + sizeof...(Is)> vector_t;
+    typedef typename array_t::value_type value_t;
 
     basic_swizzle(V &vector) : array(vector.array)
     {
@@ -29,11 +30,6 @@ public:
     {
 
     }*/
-
-    operator vector_t()
-    {
-        return vector_t{array[I], array[Is]...};
-    }
 
     template<size_t I_, size_t... Is_>
     auto& operator =(const basic_swizzle<V, I_, Is_...> &other)
@@ -47,7 +43,21 @@ public:
     };
 
     // http://stackoverflow.com/a/18101382/854540
-    template<typename U = typename array_t::value_type, typename = std::enable_if_t<sizeof...(Is) == 0, U>>
+    template<typename U = value_t, typename = std::enable_if_t<sizeof...(Is) == 0, U>>
+    auto& operator =(const value_t &value)
+    {
+        array[I] = value;
+
+        return *this;
+    }
+
+    operator vector_t()
+    {
+        return vector_t{array[I], array[Is]...};
+    }
+
+    // http://stackoverflow.com/a/18101382/854540
+    template<typename U = value_t, typename = std::enable_if_t<sizeof...(Is) == 0, U>>
     operator U()
     {
         return array[I];
@@ -69,9 +79,11 @@ struct indices_pack<N, I>
     static constexpr size_t max = I;
 };
 
-template<typename T, size_t N>
+template<typename T, size_t N, typename = std::enable_if_t<(N > 0)>>
 class basic_vector
 {
+    //static_assert(N > 0, "Invalid dimensionality '0'");
+
 public:
     typedef basic_vector<T, N> this_t;
     typedef std::array<T, N> array_t;

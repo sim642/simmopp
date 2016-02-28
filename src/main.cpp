@@ -4,6 +4,7 @@
 using namespace std;
 using namespace simmo;
 
+//typedef basic_vector<double, 0> Vec0d;
 typedef basic_vector<double, 1> Vec1d;
 typedef basic_vector<double, 2> Vec2d;
 typedef basic_vector<double, 3> Vec3d;
@@ -31,6 +32,9 @@ int main()
 
     double k = u.x();
     cout << k << endl;
+
+    v.x() = 6;
+    cout << v << endl;
 
     return 0;
 }
