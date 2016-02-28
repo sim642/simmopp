@@ -36,5 +36,8 @@ int main()
     v.x() = 6;
     cout << v << endl;
 
+    d.swizzle() = a.yx();
+    cout << d << endl;
+
     return 0;
 }

@@ -31,8 +31,8 @@ public:
 
     }*/
 
-    template<size_t I_, size_t... Is_>
-    auto& operator =(const basic_swizzle<V, I_, Is_...> &other)
+    template<size_t N, size_t I_, size_t... Is_>
+    auto& operator =(const basic_swizzle<typename V::template resize_t<N>, I_, Is_...> &other)
     {
         auto copy = other.array;
 
@@ -64,6 +64,20 @@ public:
     }
 
     array_t &array;
+
+    typedef basic_swizzle<V, I, Is..., 1 + sizeof...(Is)> next;
+};
+
+template<typename V, size_t N>
+struct full_swizzle
+{
+    typedef typename full_swizzle<V, N - 1>::type::next type;
+};
+
+template<typename V>
+struct full_swizzle<V, 1>
+{
+    typedef basic_swizzle<V, 0> type;
 };
 
 template<size_t N, size_t I, size_t... Is>
@@ -91,8 +105,19 @@ public:
     template<size_t N_>
     using resize_t = basic_vector<T, N_>;
 
-    template<typename... Vals>
+    /*template<typename... Vals>
     basic_vector(Vals... vals) : array({vals...})
+    {
+
+    }*/
+
+    template<typename... Ts>
+    basic_vector(T val, Ts... vals) : array{{val, vals...}}
+    {
+
+    }
+
+    basic_vector(const this_t &other) : array(other.array)
     {
 
     }
@@ -135,6 +160,11 @@ public:
     BASIC_VECTOR_SWIZZLE(zyz, 2, 1, 0);
 
 #undef BASIC_VECTOR_SWIZZLE
+
+    auto swizzle()
+    {
+        return typename full_swizzle<this_t, N>::type(*this);
+    }
 };
 
 template<typename T, size_t N>
