@@ -11,8 +11,8 @@ typedef basic_vector<double, 3> Vec3d;
 int main()
 {
     Vec3d a = {1, 2, 3};
-    Vec3d b = {-2, 3, 0.5};
-    Vec2d c = {1, 5};
+    Vec3d b(-2, 3, 0.5);
+    Vec2d c{1, 5};
 
     Vec2d d = b.zy();
     cout << d << endl;
@@ -25,9 +25,12 @@ int main()
     b.yzx() = a.zxy();
     cout << b << endl;
 
-    Vec1d v = {5};
+    Vec1d v = 5;
     Vec1d u = v.x();
     cout << u << endl;
+
+    double k = u.x();
+    cout << k << endl;
 
     return 0;
 }

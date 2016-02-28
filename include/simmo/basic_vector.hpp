@@ -30,7 +30,7 @@ public:
 
     }*/
 
-    operator vector_t ()
+    operator vector_t()
     {
         return vector_t{array[I], array[Is]...};
     }
@@ -46,10 +46,12 @@ public:
         return *this;
     };
 
-    /*operator std::enable_if_t<sizeof...(Is) == 0, typename array_t::value_type>()
+    // http://stackoverflow.com/a/18101382/854540
+    template<typename U = typename array_t::value_type, typename = std::enable_if_t<sizeof...(Is) == 0, U>>
+    operator U()
     {
         return array[I];
-    }*/
+    }
 
     array_t &array;
 };
@@ -76,6 +78,12 @@ public:
 
     template<size_t N_>
     using resize_t = basic_vector<T, N_>;
+
+    template<typename... Vals>
+    basic_vector(Vals... vals) : array({vals...})
+    {
+
+    }
 
     /*basic_vector(std::initializer_list<T> list)
     {
