@@ -1,7 +1,8 @@
 #include <iostream>
-#include "basic_vector.hpp"
+#include "simmo/basic_vector.hpp"
 
 using namespace std;
+using namespace simmo;
 
 typedef basic_vector<double, 1> Vec1d;
 typedef basic_vector<double, 2> Vec2d;

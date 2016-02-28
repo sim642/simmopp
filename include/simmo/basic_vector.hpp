@@ -8,6 +8,9 @@
 #include <array>
 #include <type_traits>
 
+namespace simmo
+{
+
 template<typename V, size_t I, size_t... Is>
 class basic_swizzle
 {
@@ -127,5 +130,6 @@ std::ostream& operator <<(std::ostream &out, const basic_vector<T, N> &vector)
     return out;
 };
 
+}
 
 #endif //SIMMOPP_BASIC_VECTOR_HPP
