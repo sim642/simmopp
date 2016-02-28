@@ -73,50 +73,24 @@ public:
 
     array_t array;
 
-    auto x()
-    {
-        return basic_swizzle<this_t, 0>(*this);
-    };
-
-    auto y()
-    {
-        return basic_swizzle<this_t, 1>(*this);
-    };
-
-    auto z()
-    {
-        return basic_swizzle<this_t, 2>(*this);
-    };
-
-    auto xy()
-    {
-        return basic_swizzle<this_t, 0, 1>(*this);
+#define BASIC_VECTOR_SWIZZLE(name, ...) \
+    auto name() \
+    { \
+        return basic_swizzle<this_t, __VA_ARGS__>(*this); \
     }
 
-    auto xz()
-    {
-        return basic_swizzle<this_t, 0, 2>(*this);
-    }
+    BASIC_VECTOR_SWIZZLE(x, 0);
+    BASIC_VECTOR_SWIZZLE(y, 0);
+    BASIC_VECTOR_SWIZZLE(z, 0);
 
-    auto yz()
-    {
-        return basic_swizzle<this_t, 1, 2>(*this);
-    }
+    BASIC_VECTOR_SWIZZLE(xy, 0, 1);
+    BASIC_VECTOR_SWIZZLE(yx, 1, 0);
+    BASIC_VECTOR_SWIZZLE(xz, 0, 2);
+    BASIC_VECTOR_SWIZZLE(zx, 2, 0);
+    BASIC_VECTOR_SWIZZLE(yz, 1, 2);
+    BASIC_VECTOR_SWIZZLE(zy, 2, 1);
 
-    auto yx()
-    {
-        return basic_swizzle<this_t, 1, 0>(*this);
-    }
-
-    auto zx()
-    {
-        return basic_swizzle<this_t, 2, 0>(*this);
-    }
-
-    auto zy()
-    {
-        return basic_swizzle<this_t, 2, 1>(*this);
-    }
+#undef BASIC_VECTOR_SWIZZLE
 };
 
 template<typename T, size_t N>
