@@ -1,5 +1,7 @@
 #include <iostream>
+
 #include <simmo/vector.hpp>
+#include <simmo/point.hpp>
 
 using namespace std;
 using namespace simmo;
@@ -13,5 +15,6 @@ int main()
     b.y() = a.z();
 
     cout << a << " " << b << " " << c << " " << d << endl;
+    cout << sizeof(a) << " " << sizeof(b) << endl;
     return 0;
 }
