@@ -51,5 +51,7 @@ int main()
 
     cout << norm(a) << endl;
     cout << dot(a, b) << endl;
+
+    cout << norm(vector3i(5, 6, 8)) << endl;
     return 0;
 }

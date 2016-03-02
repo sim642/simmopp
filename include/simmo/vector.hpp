@@ -116,7 +116,12 @@ auto norm(const vector<T, N> &vec)
     return std::sqrt(dot(vec, vec));
 };
 
-typedef vector<double, 0> vector0d;
+typedef vector<int, 1> vector1i;
+typedef vector<int, 2> vector2i;
+typedef vector<int, 3> vector3i;
+typedef vector<float, 1> vector1f;
+typedef vector<float, 2> vector2f;
+typedef vector<float, 3> vector3f;
 typedef vector<double, 1> vector1d;
 typedef vector<double, 2> vector2d;
 typedef vector<double, 3> vector3d;

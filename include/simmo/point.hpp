@@ -70,7 +70,12 @@ vector<T, N> operator -(const point<T, N> &lhs, const point<T, N> &rhs)
     return ret;
 };
 
-typedef point<double, 0> point0d;
+typedef point<int, 1> point1i;
+typedef point<int, 2> point2i;
+typedef point<int, 3> point3i;
+typedef point<float, 1> point1f;
+typedef point<float, 2> point2f;
+typedef point<float, 3> point3f;
 typedef point<double, 1> point1d;
 typedef point<double, 2> point2d;
 typedef point<double, 3> point3d;
