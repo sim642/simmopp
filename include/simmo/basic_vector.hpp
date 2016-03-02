@@ -7,6 +7,9 @@
 
 #include <array>
 #include <type_traits>
+#include <utility>
+#include <algorithm>
+#include <memory>
 
 namespace simmo
 {
@@ -14,6 +17,45 @@ namespace simmo
 template<typename T, size_t N>
 class basic_vector
 {
+public:
+    basic_vector() = default;
+    basic_vector(const basic_vector<T, N> &other) : data(other.data)
+    {
+
+    }
+
+    basic_vector(basic_vector<T, N> &&other) : data(std::move(other.data))
+    {
+
+    }
+
+    template<typename... Ts>
+    explicit basic_vector(const T &val, const Ts&... vals) : data{{val, vals...}}
+    {
+
+    }
+
+    basic_vector(std::initializer_list<T> vals)
+    {
+        if (vals.size() > N)
+            throw std::out_of_range("basic_vector: initializer list too large");
+
+        std::copy(vals.begin(), vals.end(), data.begin());
+        std::uninitialized_fill(data.begin() + vals.size(), data.end(), T());
+    }
+
+    auto& operator =(const basic_vector<T, N> &other)
+    {
+        data = other.data;
+        return *this;
+    }
+
+    auto& operator =(basic_vector<T, N> &&other)
+    {
+        data = std::move(other.data);
+        return *this;
+    }
+
 public:
 
 #define BASIC_VECTOR_COORDINATE(name, i) \
@@ -33,7 +75,7 @@ public:
 
 #undef BASIC_VECTOR_COORDINATE
 
-public: // TODO: make private, create contructors
+public:
     std::array<T, N> data;
 };
 
