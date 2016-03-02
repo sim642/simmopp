@@ -30,5 +30,19 @@ int main()
     a /= 7;
     cout << a << endl;
 
+    cout << "--------" << endl;
+
+    point2d A(5, 7), B(1, -3);
+    cout << A << endl;
+
+    cout << A + a << endl;
+    cout << a + A << endl;
+    cout << A - a << endl;
+    cout << A - B << endl;
+
+    A += a;
+    cout << A << endl;
+    A -= b;
+    cout << A << endl;
     return 0;
 }
