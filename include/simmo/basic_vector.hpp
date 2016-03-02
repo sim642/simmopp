@@ -10,6 +10,7 @@
 #include <utility>
 #include <algorithm>
 #include <memory>
+#include <stdexcept>
 
 namespace simmo
 {
