@@ -32,6 +32,8 @@ int main()
 
     cout << "--------" << endl;
 
+    a = {1, 2};
+
     point2d A(5, 7), B(1, -3);
     cout << A << endl;
 

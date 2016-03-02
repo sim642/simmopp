@@ -58,6 +58,16 @@ public:
         return *this;
     }
 
+    auto& operator =(std::initializer_list<T> vals)
+    {
+        if (vals.size() > N)
+            throw std::out_of_range("basic_vector: initializer list too large");
+
+        std::copy(vals.begin(), vals.end(), data.begin());
+        std::uninitialized_fill(data.begin() + vals.size(), data.end(), T());
+        return *this;
+    }
+
 public:
 
 #define BASIC_VECTOR_COORDINATE(name, i) \
