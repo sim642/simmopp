@@ -50,7 +50,7 @@ public:
         return *this;
     }
 
-    auto& operator *=(const T &scalar)
+    auto& operator *=(const T &scalar) // TODO: is_convertible
     {
         std::transform(data.begin(), data.end(), data.begin(), [&scalar](const auto &val)
         {
@@ -59,7 +59,7 @@ public:
         return *this;
     }
 
-    auto& operator /=(const T &scalar)
+    auto& operator /=(const T &scalar) // TODO: is_convertible
     {
         std::transform(data.begin(), data.end(), data.begin(), [&scalar](const auto &val)
         {
@@ -67,6 +67,41 @@ public:
         });
         return *this;
     }
+};
+
+template<typename T, size_t N>
+vector<T, N> operator +(const vector<T, N> &lhs, const vector<T, N> &rhs)
+{
+    vector<T, N> ret = lhs;
+    return ret += rhs;
+};
+
+template<typename T, size_t N>
+vector<T, N> operator -(const vector<T, N> &lhs, const vector<T, N> &rhs)
+{
+    vector<T, N> ret = lhs;
+    return ret -= rhs;
+};
+
+template<typename T, size_t N>
+vector<T, N> operator *(const vector<T, N> &lhs, const T &rhs)
+{
+    vector<T, N> ret = lhs;
+    return ret *= rhs;
+};
+
+template<typename T, size_t N>
+vector<T, N> operator *(const T &lhs, const vector<T, N> &rhs)
+{
+    vector<T, N> ret = rhs;
+    return ret *= lhs;
+};
+
+template<typename T, size_t N>
+vector<T, N> operator /(const vector<T, N> &lhs, const T &rhs)
+{
+    vector<T, N> ret = lhs;
+    return ret /= rhs;
 };
 
 typedef vector<double, 0> vector0d;

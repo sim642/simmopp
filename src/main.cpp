@@ -14,6 +14,12 @@ int main()
     cout << +a << endl;
     cout << -a << endl;
 
+    cout << a + b << endl;
+    cout << a - c << endl;
+    cout << 2.0 * a << endl;
+    cout << a * 2.0 << endl;
+    cout << a / 7.0 << endl;
+
     a += b;
     cout << a << endl;
     a -= c;
