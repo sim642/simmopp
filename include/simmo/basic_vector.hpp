@@ -20,6 +20,11 @@ public:
     auto& name() \
     { \
         return std::enable_if_t<(N > i), T&>(data[i]); \
+    } \
+     \
+    const auto& name() const \
+    { \
+        return std::enable_if_t<(N > i), const T&>(data[i]); \
     }
 
     BASIC_VECTOR_COORDINATE(x, 0);

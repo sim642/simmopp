@@ -6,8 +6,8 @@ using namespace simmo;
 
 int main()
 {
-    vector3d a = {1, 2, 3};
-    vector3d b = {5, 6, 7};
+    const vector3d a = {1, 2, 3};
+    vector2d b = {5, 6};
     b.y() = a.z();
 
     cout << a.x() << " " << b.y() << endl;
