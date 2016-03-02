@@ -10,11 +10,12 @@
 namespace simmo
 {
 
-template<typename T, size_t N>
-class point : public basic_vector<T, N>
+template<typename T, size_t N, typename Base = basic_vector<T, N>>
+class point : public Base
 {
 public:
-    using basic_vector<T, N>::basic_vector;
+    using Base::Base;
+    using Base::data;
 };
 
 typedef point<double, 0> point0d;

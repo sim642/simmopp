@@ -6,15 +6,67 @@
 #define SIMMOPP_VECTOR_HPP
 
 #include "basic_vector.hpp"
+#include <algorithm>
 
 namespace simmo
 {
 
-template<typename T, size_t N>
-class vector : public basic_vector<T, N>
+template<typename T, size_t N, typename Base = basic_vector<T, N>>
+class vector : public Base
 {
 public:
-    using basic_vector<T, N>::basic_vector;
+    using Base::Base;
+    using Base::data;
+
+    auto& operator +()
+    {
+        return *this;
+    }
+
+    auto& operator -()
+    {
+        std::transform(data.begin(), data.end(), data.begin(), [](const auto &val)
+        {
+            return -val;
+        });
+        return *this;
+    }
+
+    auto& operator +=(const vector<T, N> &other)
+    {
+        std::transform(data.begin(), data.end(), other.data.begin(), data.begin(), [](const auto &lhs, const auto &rhs)
+        {
+            return lhs + rhs;
+        });
+        return *this;
+    }
+
+    auto& operator -=(const vector<T, N> &other)
+    {
+        std::transform(data.begin(), data.end(), other.data.begin(), data.begin(), [](const auto &lhs, const auto &rhs)
+        {
+            return lhs - rhs;
+        });
+        return *this;
+    }
+
+    auto& operator *=(const T &scalar)
+    {
+        std::transform(data.begin(), data.end(), data.begin(), [&scalar](const auto &val)
+        {
+            return val * scalar;
+        });
+        return *this;
+    }
+
+    auto& operator /=(const T &scalar)
+    {
+        std::transform(data.begin(), data.end(), data.begin(), [&scalar](const auto &val)
+        {
+            return val / scalar;
+        });
+        return *this;
+    }
 };
 
 typedef vector<double, 0> vector0d;

@@ -8,13 +8,21 @@ using namespace simmo;
 
 int main()
 {
-    const vector3d a = {1, 2, 3};
-    vector2d b{5, 6};
-    vector3d c(1, 2, 5);
-    vector2d d = b;
-    b.y() = a.z();
+    vector2d a(1, 2), b(5, 6), c(-2, 5);
+    cout << a << endl;
 
-    cout << a << " " << b << " " << c << " " << d << endl;
-    cout << sizeof(a) << " " << sizeof(b) << endl;
+    cout << +a << endl;
+    cout << -a << endl;
+
+    a += b;
+    cout << a << endl;
+    a -= c;
+    cout << a << endl;
+
+    a *= 2;
+    cout << a << endl;
+    a /= 7;
+    cout << a << endl;
+
     return 0;
 }
