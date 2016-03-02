@@ -12,6 +12,6 @@ int main()
     vector2d d = b;
     b.y() = a.z();
 
-    cout << a.x() << " " << b.y() << " " << d.x() << endl;
+    cout << a << " " << b << " " << c << " " << d << endl;
     return 0;
 }

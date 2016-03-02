@@ -11,6 +11,7 @@
 #include <algorithm>
 #include <memory>
 #include <stdexcept>
+#include <ostream>
 
 namespace simmo
 {
@@ -78,6 +79,20 @@ public:
 
 public:
     std::array<T, N> data;
+};
+
+template<typename T, size_t N>
+std::ostream& operator <<(std::ostream &out, const basic_vector<T, N> &vector)
+{
+    out << "(";
+    for (auto it = vector.data.begin(); it != vector.data.end(); ++it)
+    {
+        if (it != vector.data.begin())
+            out << ", ";
+        out << *it;
+    }
+    out << ")";
+    return out;
 };
 
 }
