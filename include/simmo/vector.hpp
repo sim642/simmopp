@@ -104,6 +104,18 @@ vector<T, N> operator /(const vector<T, N> &lhs, const T &rhs)
     return ret /= rhs;
 };
 
+template<typename T, size_t N>
+T dot(const vector<T, N> &lhs, const vector<T, N> &rhs)
+{
+    return std::inner_product(lhs.data.begin(), lhs.data.end(), rhs.data.begin(), T(0));
+};
+
+template<typename T, size_t N>
+auto norm(const vector<T, N> &vec)
+{
+    return std::sqrt(dot(vec, vec));
+};
+
 typedef vector<double, 0> vector0d;
 typedef vector<double, 1> vector1d;
 typedef vector<double, 2> vector2d;

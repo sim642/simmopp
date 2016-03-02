@@ -46,5 +46,10 @@ int main()
     cout << A << endl;
     A -= b;
     cout << A << endl;
+
+    cout << "-----------" << endl;
+
+    cout << norm(a) << endl;
+    cout << dot(a, b) << endl;
     return 0;
 }
