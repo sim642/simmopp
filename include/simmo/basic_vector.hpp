@@ -21,6 +21,7 @@ class basic_vector
 {
 public:
     basic_vector() = default;
+
     basic_vector(const basic_vector<T, N> &other) : data(other.data)
     {
 
@@ -31,8 +32,14 @@ public:
 
     }
 
+    template<typename U>
+    basic_vector(const basic_vector<U, N> &other)
+    {
+        std::copy(other.data.begin(), other.data.end(), data.begin());
+    }
+
     template<typename... Ts>
-    explicit basic_vector(const T &val, const Ts&... vals) : data{{val, vals...}}
+    explicit basic_vector(const T &val, const Ts&... vals) : data{{val, static_cast<T>(vals)...}}
     {
 
     }
