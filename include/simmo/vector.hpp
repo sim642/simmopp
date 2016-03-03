@@ -127,6 +127,13 @@ auto norm(const vector<T, N> &vec)
     return std::sqrt(dot(vec, vec));
 };
 
+//template<typename T, size_t N, typename U = std::result_of<norm(const vector<T, N>&)>::type>
+template<typename T, size_t N, typename U = decltype(norm(std::declval<vector<T, N>>()))>
+auto normalize(const vector<T, N> &vec)
+{
+    return vector<U, N>(vec) / norm(vec);
+};
+
 typedef vector<int, 1> vector1i;
 typedef vector<int, 2> vector2i;
 typedef vector<int, 3> vector3i;

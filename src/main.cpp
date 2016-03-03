@@ -54,6 +54,8 @@ int main()
 
     cout << norm(vector3i(5, 6, 8)) << endl;
 
-    cout << cross(vector3i{1, 2, 3}, vector3i{-1, 5, -10}) << endl;
+    auto n = cross(vector3i{1, 2, 3}, vector3i{-1, 5, -10}) ;
+    cout << n << " " << norm(n) << " " << normalize(n) << endl;
+
     return 0;
 }
