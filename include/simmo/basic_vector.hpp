@@ -38,6 +38,8 @@ public:
         std::copy(other.data.begin(), other.data.end(), data.begin());
     }
 
+    // TODO: cross-type move constructor
+
     template<typename... Ts>
     explicit basic_vector(const T &val, const Ts&... vals) : data{{val, static_cast<T>(vals)...}}
     {
@@ -74,6 +76,9 @@ public:
         std::uninitialized_fill(data.begin() + vals.size(), data.end(), T());
         return *this;
     }
+
+    // TODO: cross-type assignment operator
+    // TODO: cross-type move assignment operator
 
 public:
 

@@ -2,6 +2,7 @@
 
 #include <simmo/vector.hpp>
 #include <simmo/point.hpp>
+#include <simmo/basic_line.hpp>
 
 using namespace std;
 using namespace simmo;
