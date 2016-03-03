@@ -110,6 +110,17 @@ T dot(const vector<T, N> &lhs, const vector<T, N> &rhs)
     return std::inner_product(lhs.data.begin(), lhs.data.end(), rhs.data.begin(), T(0));
 };
 
+template<typename T>
+vector<T, 3> cross(const vector<T, 3> &lhs, const vector<T, 3> &rhs)
+{
+    return
+    {
+        lhs.y() * rhs.z() - lhs.z() * rhs.y(),
+        -(lhs.x() * rhs.z() - lhs.z() * rhs.x()),
+        lhs.x() * rhs.y() - lhs.y() * rhs.x()
+    };
+};
+
 template<typename T, size_t N>
 auto norm(const vector<T, N> &vec)
 {

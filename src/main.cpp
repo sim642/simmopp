@@ -53,5 +53,7 @@ int main()
     cout << dot(a, b) << endl;
 
     cout << norm(vector3i(5, 6, 8)) << endl;
+
+    cout << cross(vector3i{1, 2, 3}, vector3i{-1, 5, -10}) << endl;
     return 0;
 }
