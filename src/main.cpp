@@ -2,7 +2,9 @@
 
 #include <simmo/vector.hpp>
 #include <simmo/point.hpp>
-#include <simmo/basic_line.hpp>
+#include <simmo/line.hpp>
+#include <simmo/ray.hpp>
+#include <simmo/segment.hpp>
 
 using namespace std;
 using namespace simmo;
