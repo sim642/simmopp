@@ -123,6 +123,27 @@ private:
     bits_t bits;
 };
 
+template<dimsize_t M, dimsize_t N>
+bitmatrix<M, N> operator &(const bitmatrix<M, N> &lhs, const bitmatrix<M, N> &rhs)
+{
+    bitmatrix<M, N> bm = lhs;
+    return bm &= rhs;
+};
+
+template<dimsize_t M, dimsize_t N>
+bitmatrix<M, N> operator |(const bitmatrix<M, N> &lhs, const bitmatrix<M, N> &rhs)
+{
+    bitmatrix<M, N> bm = lhs;
+    return bm |= rhs;
+};
+
+template<dimsize_t M, dimsize_t N>
+bitmatrix<M, N> operator ^(const bitmatrix<M, N> &lhs, const bitmatrix<M, N> &rhs)
+{
+    bitmatrix<M, N> bm = lhs;
+    return bm ^= rhs;
+};
+
 }
 
 #endif //SIMMOPP_BITMATRIX_HPP
