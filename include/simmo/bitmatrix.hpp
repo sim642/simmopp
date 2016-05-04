@@ -67,6 +67,28 @@ public:
         return bits;
     }
 
+    bool get(dimsize_t row, dimsize_t col) const
+    {
+        return (bits >> (N * row + col)) & 0x1;
+    }
+
+    bitmatrix& set(dimsize_t row, dimsize_t col)
+    {
+        bits |= (0x1 << (N * row + col));
+        return *this;
+    }
+
+    bitmatrix& clear(dimsize_t row, dimsize_t col)
+    {
+        bits &= ~(0x1 << (N * row + col));
+        return *this;
+    }
+
+    bitmatrix& write(dimsize_t row, dimsize_t col, bool value)
+    {
+        return value ? set(row, col) : clear(row, col);
+    }
+
     bitmatrix operator ~() const
     {
         return bitmatrix(~bits);
