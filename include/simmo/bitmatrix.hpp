@@ -232,6 +232,22 @@ bitmatrix<M, P> operator *(const bitmatrix<M, N> &lhs, const bitmatrix<N, P> &rh
     return bm;
 };
 
+template<dimsize_t M, dimsize_t N>
+bitmatrix<N, M> transpose(const bitmatrix<M, N> &bm)
+{
+    bitmatrix<N, M> bm2;
+
+    for (int row = 0; row < M; row++)
+    {
+        for (int col = 0; col < N; col++)
+        {
+            bm2(col, row) = bm(row, col);
+        }
+    }
+
+    return bm2;
+};
+
 }
 
 #endif //SIMMOPP_BITMATRIX_HPP
