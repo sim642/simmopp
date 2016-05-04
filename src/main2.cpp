@@ -7,15 +7,23 @@ using namespace simmo;
 
 int main()
 {
-    bitmatrix<2, 3> A = bitmatrix<2, 3>::eye();
-    const bitmatrix<2, 3> B = bitmatrix<2, 3>{}.set(0, 2);
-    A += B;
+    bitmatrix<4, 4> A;
+    A.set(0, 1);
+    A.set(1, 0).set(1, 1).set(1, 2).set(1, 3);
+    A.set(2, 3);
+    A.set(3, 0).set(3, 1).set(3, 3);
 
-    cout << A(0, 0) << endl;
-    cout << A(0, 1) << endl;
-    cout << A(0, 2) << endl;
-    cout << A(1, 0) << endl;
-    cout << A(1, 1) << endl;
-    cout << A(1, 2) << endl;
+    bitmatrix<4, 4> P;
+    P.set(0, 1).set(1, 0).set(2, 2).set(3, 3);
+
+    auto M = P * A;
+    for (int row = 0; row < 4; ++row)
+    {
+        for (int col = 0; col < 4; ++col)
+        {
+            cout << M(row, col) << " ";
+        }
+        cout << endl;
+    }
     return 0;
 }

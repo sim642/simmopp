@@ -200,6 +200,25 @@ bitmatrix<M, N> operator +(const bitmatrix<M, N> &lhs, const bitmatrix<M, N> &rh
     return bm += rhs;
 };
 
+template<dimsize_t M, dimsize_t N, dimsize_t P>
+bitmatrix<M, P> operator *(const bitmatrix<M, N> &lhs, const bitmatrix<N, P> &rhs)
+{
+    bitmatrix<M, P> bm;
+    for (int row = 0; row < M; row++)
+    {
+        for (int col = 0; col < P; col++)
+        {
+            bool value = false;
+
+            for (int k = 0; !value && k < N; k++)
+                value |= lhs(row, k) && rhs(k, col);
+
+            bm(row, col) = value;
+        }
+    }
+    return bm;
+};
+
 }
 
 #endif //SIMMOPP_BITMATRIX_HPP
