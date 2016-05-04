@@ -30,6 +30,14 @@ class bitmatrix
 public:
     typedef uint_t<M * N> bits_t;
 
+    static bitmatrix eye()
+    {
+        bitmatrix bm;
+        for (int i = 0; i < std::min(M, N); ++i)
+            bm.set(i, i);
+        return bm;
+    }
+
     bitmatrix() : bits{0}
     {
 
