@@ -117,6 +117,19 @@ private:
             return *this;
         }
 
+        reference& operator =(const reference &other)
+        {
+            *this = static_cast<bool>(other);
+            return *this;
+        }
+
+        void swap(reference other)
+        {
+            bool tmp = static_cast<bool>(*this);
+            *this = other;
+            other = tmp;
+        }
+
     private:
         bitmatrix &bm;
         dimsize_t row, col;
