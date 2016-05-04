@@ -156,6 +156,11 @@ public:
         return *this;
     }
 
+    bitmatrix& operator +=(const bitmatrix &other)
+    {
+        return *this |= other;
+    }
+
     friend bool operator ==(const bitmatrix &lhs, const bitmatrix &rhs)
     {
         return lhs.bits == rhs.bits;
@@ -186,6 +191,13 @@ bitmatrix<M, N> operator ^(const bitmatrix<M, N> &lhs, const bitmatrix<M, N> &rh
 {
     bitmatrix<M, N> bm = lhs;
     return bm ^= rhs;
+};
+
+template<dimsize_t M, dimsize_t N>
+bitmatrix<M, N> operator +(const bitmatrix<M, N> &lhs, const bitmatrix<M, N> &rhs)
+{
+    bitmatrix<M, N> bm = lhs;
+    return bm += rhs;
 };
 
 }
