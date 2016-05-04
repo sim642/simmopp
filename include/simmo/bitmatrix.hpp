@@ -97,6 +97,42 @@ public:
         return value ? set(row, col) : clear(row, col);
     }
 
+private:
+    class reference
+    {
+    public:
+        reference(bitmatrix &bm, dimsize_t row, dimsize_t col) : bm(bm), row(row), col(col)
+        {
+
+        }
+
+        operator bool() const
+        {
+            return bm.get(row, col);
+        }
+
+        reference& operator =(bool value)
+        {
+            bm.write(row, col, value);
+            return *this;
+        }
+
+    private:
+        bitmatrix &bm;
+        dimsize_t row, col;
+    };
+
+public:
+    reference operator ()(dimsize_t row, dimsize_t col)
+    {
+        return reference(*this, row, col);
+    }
+
+    bool operator ()(dimsize_t row, dimsize_t col) const
+    {
+        return get(row, col);
+    }
+
     bitmatrix operator ~() const
     {
         return bitmatrix(~bits);
