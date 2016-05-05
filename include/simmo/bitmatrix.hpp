@@ -33,7 +33,7 @@ public:
     static bitmatrix eye()
     {
         bitmatrix bm;
-        for (int i = 0; i < std::min(M, N); ++i)
+        for (dimsize_t i = 0; i < std::min(M, N); ++i)
             bm.set(i, i);
         return bm;
     }
@@ -180,7 +180,7 @@ public:
     }
 
 private:
-    static const bits_t mask = (1 << (M * N)) - 1;
+    static const bits_t mask = (1u << (M * N)) - 1;
 
     bits_t bits;
 };
@@ -217,13 +217,13 @@ template<dimsize_t M, dimsize_t N, dimsize_t P>
 bitmatrix<M, P> operator *(const bitmatrix<M, N> &lhs, const bitmatrix<N, P> &rhs)
 {
     bitmatrix<M, P> bm;
-    for (int row = 0; row < M; row++)
+    for (dimsize_t row = 0; row < M; row++)
     {
-        for (int col = 0; col < P; col++)
+        for (dimsize_t col = 0; col < P; col++)
         {
             bool value = false;
 
-            for (int k = 0; !value && k < N; k++)
+            for (dimsize_t k = 0; !value && k < N; k++)
                 value |= lhs(row, k) && rhs(k, col);
 
             bm(row, col) = value;
@@ -237,9 +237,9 @@ bitmatrix<N, M> transpose(const bitmatrix<M, N> &bm)
 {
     bitmatrix<N, M> bm2;
 
-    for (int row = 0; row < M; row++)
+    for (dimsize_t row = 0; row < M; row++)
     {
-        for (int col = 0; col < N; col++)
+        for (dimsize_t col = 0; col < N; col++)
         {
             bm2(col, row) = bm(row, col);
         }
