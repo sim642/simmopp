@@ -81,11 +81,6 @@ public:
     // TODO: cross-type assignment operator
     // TODO: cross-type move assignment operator
 
-    friend bool operator ==(const basic_vector &lhs, const basic_vector &rhs)
-    {
-        return lhs.data == rhs.data;
-    }
-
 public:
 
 #define BASIC_VECTOR_COORDINATE(name, i) \
