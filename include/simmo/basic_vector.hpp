@@ -12,6 +12,7 @@
 #include <memory>
 #include <stdexcept>
 #include <ostream>
+#include <functional>
 
 namespace simmo
 {
@@ -80,6 +81,11 @@ public:
     // TODO: cross-type assignment operator
     // TODO: cross-type move assignment operator
 
+    friend bool operator ==(const basic_vector &lhs, const basic_vector &rhs)
+    {
+        return lhs.data == rhs.data;
+    }
+
 public:
 
 #define BASIC_VECTOR_COORDINATE(name, i) \
@@ -115,6 +121,25 @@ std::ostream& operator <<(std::ostream &out, const basic_vector<T, N> &vector)
     }
     out << ")";
     return out;
+};
+
+}
+
+namespace std
+{
+
+template<>
+template<typename T, size_t N>
+struct hash<simmo::basic_vector<T, N>>
+{
+    size_t operator ()(const simmo::basic_vector<T, N> &vector) const
+    {
+        size_t h = 0;
+        for (const T &val : vector.data) {
+            h ^= std::hash<T>()(val);
+        }
+        return h;
+    }
 };
 
 }

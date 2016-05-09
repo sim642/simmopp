@@ -82,4 +82,19 @@ typedef point<double, 3> point3d;
 
 }
 
+namespace std
+{
+
+template<>
+template<typename T, size_t N>
+struct hash<simmo::point<T, N>>
+{
+    size_t operator()(const simmo::point<T, N> &vector) const
+    {
+        return hash<simmo::basic_vector<T, N>>()(vector);
+    }
+};
+
+}
+
 #endif //SIMMOPP_POINT_HPP
