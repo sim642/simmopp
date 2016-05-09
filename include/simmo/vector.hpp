@@ -146,4 +146,19 @@ typedef vector<double, 3> vector3d;
 
 }
 
+namespace std
+{
+
+template<>
+template<typename T, size_t N>
+struct hash<simmo::vector<T, N>>
+{
+    size_t operator()(const simmo::vector<T, N> &vector) const
+    {
+        return hash<simmo::basic_vector<T, N>>()(vector);
+    }
+};
+
+}
+
 #endif //SIMMOPP_VECTOR_HPP
