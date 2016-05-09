@@ -7,6 +7,8 @@
 
 #include "basic_vector.hpp"
 #include <algorithm>
+#include <numeric>
+#include <cmath>
 
 namespace simmo
 {

@@ -16,7 +16,7 @@ int main()
     m.emplace(make_pair(point2i{-1.0, 3.0}, 2));
     m.emplace(make_pair(point2i{-1.0, -123123.1}, 1));
 
-    m[point2i{-1.0, -2}] = 3;
+    m[{-1.0, -2}] = 3;
     for (const auto &p : m)
     {
         cout << p.first << " " << p.second << endl;
