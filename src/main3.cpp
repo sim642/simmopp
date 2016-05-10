@@ -3,6 +3,7 @@
 #include <cassert>
 
 #include <simmo/point.hpp>
+#include <simmo/basic_vector/comparison.hpp>
 
 using namespace std;
 using namespace simmo;
@@ -21,4 +22,6 @@ int main()
     {
         cout << p.first << " " << p.second << endl;
     }
+
+    cout << (point2i{1, 2} < point2i{2, 3}) << endl;
 }
