@@ -9,6 +9,6 @@ include_directories(include)
 set(SOURCE_FILES src/main3.cpp)
 add_executable(simmopp ${SOURCE_FILES})
 
-set(TEST_FILES test/main.cpp test/vector_test.cpp)
+set(TEST_FILES test/vector_test.cpp)
 add_executable(simmopp-test ${TEST_FILES})
 target_link_libraries(simmopp-test gtest gtest_main)
