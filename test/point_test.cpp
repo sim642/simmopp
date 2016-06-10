@@ -48,8 +48,8 @@ TEST(point_test, equals)
     EXPECT_EQ(A, B);
     EXPECT_EQ(B, A);
 
-    /*EXPECT_NE(A, C);
-    EXPECT_NE(B, C);*/
+    EXPECT_NE(A, C);
+    EXPECT_NE(B, C);
 }
 
 TEST(point_test, hash)

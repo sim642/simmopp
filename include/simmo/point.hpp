@@ -41,6 +41,12 @@ bool operator ==(const point<T, N> &lhs, const point<T, N> &rhs)
 };
 
 template<typename T, size_t N>
+bool operator !=(const point<T, N> &lhs, const point<T, N> &rhs)
+{
+    return lhs.data != rhs.data;
+};
+
+template<typename T, size_t N>
 point<T, N> operator +(const point<T, N> &lhs, const vector<T, N> &rhs)
 {
     point<T, N> ret = lhs;
