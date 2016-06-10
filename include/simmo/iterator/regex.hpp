@@ -7,13 +7,13 @@ namespace std
 {
 
 template<typename BidirIt, typename CharT, typename Traits>
-auto& begin(std::regex_iterator<BidirIt, CharT, Traits> &iter) noexcept
+auto begin(std::regex_iterator<BidirIt, CharT, Traits> iter) noexcept
 {
     return iter;
 };
 
 template<typename BidirIt, typename CharT, typename Traits>
-auto end(const std::regex_iterator<BidirIt, CharT, Traits> &iter) noexcept
+auto end(const std::regex_iterator<BidirIt, CharT, Traits> &) noexcept
 {
     return std::regex_iterator<BidirIt, CharT, Traits>();
 };
@@ -25,7 +25,7 @@ auto begin(std::regex_token_iterator<BidirIt, CharT, Traits> iter) noexcept
 };
 
 template<typename BidirIt, typename CharT, typename Traits>
-auto end(const std::regex_token_iterator<BidirIt, CharT, Traits> &iter) noexcept
+auto end(const std::regex_token_iterator<BidirIt, CharT, Traits> &) noexcept
 {
     return std::regex_token_iterator<BidirIt, CharT, Traits>();
 };
