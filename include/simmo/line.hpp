@@ -1,7 +1,3 @@
-//
-// Created by simmo on 4.03.16.
-//
-
 #ifndef SIMMOPP_LINE_HPP
 #define SIMMOPP_LINE_HPP
 

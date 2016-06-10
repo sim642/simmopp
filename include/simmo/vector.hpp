@@ -1,7 +1,3 @@
-//
-// Created by simmo on 2.03.16.
-//
-
 #ifndef SIMMOPP_VECTOR_HPP
 #define SIMMOPP_VECTOR_HPP
 

@@ -1,7 +1,3 @@
-//
-// Created by simmo on 6.03.16.
-//
-
 #ifndef SIMMOPP_RAY_HPP
 #define SIMMOPP_RAY_HPP
 

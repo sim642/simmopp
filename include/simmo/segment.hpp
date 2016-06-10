@@ -1,7 +1,3 @@
-//
-// Created by simmo on 6.03.16.
-//
-
 #ifndef SIMMOPP_SEGMENT_HPP
 #define SIMMOPP_SEGMENT_HPP
 
