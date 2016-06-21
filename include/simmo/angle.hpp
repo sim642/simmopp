@@ -28,12 +28,12 @@ public:
         return angle(deg_value / 180 * M_PI);
     }
 
-    const value_type& rad() const
+    value_type rad() const
     {
         return rad_value;
     }
 
-    const value_type& deg() const
+    value_type deg() const
     {
         return rad_value / M_PI * 180;
     }
