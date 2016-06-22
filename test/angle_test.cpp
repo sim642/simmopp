@@ -70,3 +70,18 @@ TEST(angle_test, assign_multiply_divide)
     a /= 4;
     EXPECT_FLOAT_EQ(a.deg(), 45);
 }
+
+TEST(angle_test, literals)
+{
+    using namespace angle_literals;
+
+    EXPECT_FLOAT_EQ((12.5_rad).rad(), 12.5);
+    EXPECT_FLOAT_EQ((-12.5_rad).rad(), -12.5);
+    EXPECT_FLOAT_EQ((5_rad).rad(), 5);
+    EXPECT_FLOAT_EQ((-5_rad).rad(), -5);
+    
+    EXPECT_FLOAT_EQ((12.5_deg).deg(), 12.5);
+    EXPECT_FLOAT_EQ((-12.5_deg).deg(), -12.5);
+    EXPECT_FLOAT_EQ((5_deg).deg(), 5);
+    EXPECT_FLOAT_EQ((-5_deg).deg(), -5);
+}

@@ -12,18 +12,18 @@ public:
     typedef double value_type;
 
 private:
-    angle(value_type rad_value) : rad_value(rad_value)
+    constexpr angle(value_type rad_value) : rad_value(rad_value)
     {
 
     }
 
 public:
-    static angle rad(value_type rad_value)
+    constexpr static angle rad(value_type rad_value)
     {
         return angle(rad_value);
     }
 
-    static angle deg(value_type deg_value)
+    constexpr static angle deg(value_type deg_value)
     {
         return angle(deg_value / 180 * M_PI);
     }
@@ -104,6 +104,29 @@ angle operator /(const angle &lhs, angle::value_type rhs)
 {
     angle ret = lhs;
     return ret /= rhs;
+}
+
+namespace angle_literals
+{
+    constexpr angle operator"" _rad(long double rad_value)
+    {
+        return angle::rad(rad_value);
+    }
+
+    constexpr angle operator"" _rad(unsigned long long rad_value)
+    {
+        return angle::rad(rad_value);
+    }
+
+    constexpr angle operator"" _deg(long double deg_value)
+    {
+        return angle::deg(deg_value);
+    }
+
+    constexpr angle operator"" _deg(unsigned long long deg_value)
+    {
+        return angle::deg(deg_value);
+    }
 }
 
 }
