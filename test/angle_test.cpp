@@ -85,3 +85,23 @@ TEST(angle_test, literals)
     EXPECT_FLOAT_EQ((5_deg).deg(), 5);
     EXPECT_FLOAT_EQ((-5_deg).deg(), -5);
 }
+
+TEST(angle_test, trig)
+{
+    EXPECT_FLOAT_EQ(sin(angle::deg(30)), 0.5);
+    EXPECT_FLOAT_EQ(cos(angle::deg(60)), 0.5);
+    EXPECT_FLOAT_EQ(tan(angle::deg(45)), 1.0);
+}
+
+TEST(angle_test, arc_trig)
+{
+    using simmo::asin;
+    using simmo::acos;
+    using simmo::atan;
+    using simmo::atan2;
+
+    EXPECT_FLOAT_EQ(asin(0.5).deg(), 30);
+    EXPECT_FLOAT_EQ(acos(0.5).deg(), 60);
+    EXPECT_FLOAT_EQ(atan(1.0).deg(), 45);
+    EXPECT_FLOAT_EQ(atan2(2, 2).deg(), 45);
+}

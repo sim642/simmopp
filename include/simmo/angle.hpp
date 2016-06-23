@@ -129,6 +129,41 @@ namespace angle_literals
     }
 }
 
+auto sin(const angle &a)
+{
+    return std::sin(a.rad());
+}
+
+auto cos(const angle &a)
+{
+    return std::cos(a.rad());
+}
+
+auto tan(const angle &a)
+{
+    return std::tan(a.rad());
+}
+
+angle asin(auto x)
+{
+    return angle::rad(std::asin(x));
+}
+
+angle acos(auto x)
+{
+    return angle::rad(std::acos(x));
+}
+
+angle atan(auto x)
+{
+    return angle::rad(std::atan(x));
+}
+
+angle atan2(auto y, auto x)
+{
+    return angle::rad(std::atan2(y, x));
+}
+
 }
 
 #endif //SIMMOPP_ANGLE_HPP
