@@ -16,18 +16,19 @@ public:
     using Base::Base;
     using Base::data;
 
-    auto& operator +()
+    auto operator +() const
     {
         return *this;
     }
 
-    auto& operator -()
+    auto operator -() const
     {
-        std::transform(data.begin(), data.end(), data.begin(), [](const auto &val)
+        auto ret = *this;
+        std::transform(ret.data.begin(), ret.data.end(), ret.data.begin(), [](const auto &val)
         {
             return -val;
         });
-        return *this;
+        return ret;
     }
 
     auto& operator +=(const vector<T, N> &other)

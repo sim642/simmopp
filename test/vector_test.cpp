@@ -56,8 +56,14 @@ TEST(vector_test, unary_plus_minus)
     vector2i v(1, -2);
     EXPECT_EQ(+v, v);
 
+    (+v).x() = 0;
+    ASSERT_EQ(v.x(), 1);
+
     vector2i mv(-1, 2);
     EXPECT_EQ(-v, mv);
+
+    (-v).x() = 0;
+    ASSERT_EQ(v.x(), 1);
 }
 
 
