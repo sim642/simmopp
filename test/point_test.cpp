@@ -1,7 +1,6 @@
 #include <gtest/gtest.h>
 
 #include <simmo/point.hpp>
-#include <simmo/basic_vector/comparison.hpp>
 
 using namespace simmo;
 
@@ -64,6 +63,8 @@ TEST(point_test, hash)
 
 TEST(point_test, comparison)
 {
+    using namespace comparison;
+
     point2i A(1, 2), B(1, 3), C(2, 3);
 
     EXPECT_TRUE(A < B);

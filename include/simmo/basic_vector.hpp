@@ -114,6 +114,15 @@ std::ostream& operator <<(std::ostream &out, const basic_vector<T, N> &vector)
     return out;
 };
 
+namespace comparison
+{
+    template<typename T, size_t N>
+    bool operator <(const basic_vector<T, N> &lhs, const basic_vector<T, N> &rhs)
+    {
+        return lhs.data < rhs.data;
+    };
+}
+
 }
 
 namespace std
