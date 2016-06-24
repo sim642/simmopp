@@ -1,6 +1,7 @@
 #ifndef SIMMOPP_ANGLE_HPP
 #define SIMMOPP_ANGLE_HPP
 
+#include "math.hpp"
 #include <cmath>
 
 namespace simmo
@@ -129,14 +130,14 @@ namespace angle_literals
     }
 }
 
-auto normalize360(const angle &a)
+auto normalize_positive(const angle &a)
 {
-    return angle::deg(std::fmod(std::fmod(a.deg(), 360.0) + 360.0, 360.0)); // TODO: avoid double fmod
+    return angle::rad(wrap_max(a.rad(), 2 * M_PI));
 }
 
-auto normalize180(const angle &a)
+auto normalize_symmetric(const angle &a)
 {
-    return angle::deg(std::fmod(std::fmod(a.deg() + 180.0, 360.0) + 360.0, 360.0) - 180.0);
+    return angle::rad(wrap_min_max(a.rad(), -M_PI, M_PI));
 }
 
 auto sin(const angle &a)

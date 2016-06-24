@@ -86,30 +86,30 @@ TEST(angle_test, literals)
     EXPECT_FLOAT_EQ((-5_deg).deg(), -5);
 }
 
-TEST(angle_test, normalize360)
+TEST(angle_test, normalize_positive)
 {
-    EXPECT_FLOAT_EQ(normalize360(angle::deg(-360)).deg(), 0);
-    EXPECT_FLOAT_EQ(normalize360(angle::deg(-270)).deg(), 90);
-    EXPECT_FLOAT_EQ(normalize360(angle::deg(-180)).deg(), 180);
-    EXPECT_FLOAT_EQ(normalize360(angle::deg(-90)).deg(), 270);
-    EXPECT_FLOAT_EQ(normalize360(angle::deg(0)).deg(), 0);
-    EXPECT_FLOAT_EQ(normalize360(angle::deg(90)).deg(), 90);
-    EXPECT_FLOAT_EQ(normalize360(angle::deg(180)).deg(), 180);
-    EXPECT_FLOAT_EQ(normalize360(angle::deg(270)).deg(), 270);
-    EXPECT_FLOAT_EQ(normalize360(angle::deg(360)).deg(), 0);
+    EXPECT_FLOAT_EQ(normalize_positive(angle::deg(-360)).deg(), 0);
+    EXPECT_FLOAT_EQ(normalize_positive(angle::deg(-270)).deg(), 90);
+    EXPECT_FLOAT_EQ(normalize_positive(angle::deg(-180)).deg(), 180);
+    EXPECT_FLOAT_EQ(normalize_positive(angle::deg(-90)).deg(), 270);
+    EXPECT_FLOAT_EQ(normalize_positive(angle::deg(0)).deg(), 0);
+    EXPECT_FLOAT_EQ(normalize_positive(angle::deg(90)).deg(), 90);
+    EXPECT_FLOAT_EQ(normalize_positive(angle::deg(180)).deg(), 180);
+    EXPECT_FLOAT_EQ(normalize_positive(angle::deg(270)).deg(), 270);
+    EXPECT_FLOAT_EQ(normalize_positive(angle::deg(360)).deg(), 0);
 }
 
-TEST(angle_test, normalize180)
+TEST(angle_test, normalize_symmetric)
 {
-    EXPECT_FLOAT_EQ(normalize180(angle::deg(-360)).deg(), 0);
-    EXPECT_FLOAT_EQ(normalize180(angle::deg(-270)).deg(), 90);
-    EXPECT_FLOAT_EQ(normalize180(angle::deg(-180)).deg(), -180);
-    EXPECT_FLOAT_EQ(normalize180(angle::deg(-90)).deg(), -90);
-    EXPECT_FLOAT_EQ(normalize180(angle::deg(0)).deg(), 0);
-    EXPECT_FLOAT_EQ(normalize180(angle::deg(90)).deg(), 90);
-    EXPECT_FLOAT_EQ(normalize180(angle::deg(180)).deg(), -180);
-    EXPECT_FLOAT_EQ(normalize180(angle::deg(270)).deg(), -90);
-    EXPECT_FLOAT_EQ(normalize180(angle::deg(360)).deg(), 0);
+    EXPECT_FLOAT_EQ(normalize_symmetric(angle::deg(-360)).deg(), 0);
+    EXPECT_FLOAT_EQ(normalize_symmetric(angle::deg(-270)).deg(), 90);
+    EXPECT_FLOAT_EQ(normalize_symmetric(angle::deg(-180)).deg(), -180);
+    EXPECT_FLOAT_EQ(normalize_symmetric(angle::deg(-90)).deg(), -90);
+    EXPECT_FLOAT_EQ(normalize_symmetric(angle::deg(0)).deg(), 0);
+    EXPECT_FLOAT_EQ(normalize_symmetric(angle::deg(90)).deg(), 90);
+    EXPECT_FLOAT_EQ(normalize_symmetric(angle::deg(180)).deg(), -180);
+    EXPECT_FLOAT_EQ(normalize_symmetric(angle::deg(270)).deg(), -90);
+    EXPECT_FLOAT_EQ(normalize_symmetric(angle::deg(360)).deg(), 0);
 }
 
 TEST(angle_test, trig)
