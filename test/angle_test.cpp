@@ -11,6 +11,9 @@ TEST(angle_test, constructor)
 
     angle b = angle::deg(12.5);
     EXPECT_FLOAT_EQ(b.deg(), 12.5);
+
+    angle c = angle::turns(12.5);
+    EXPECT_FLOAT_EQ(c.turns(), 12.5);
 }
 
 TEST(angle_test, conversion)
@@ -20,6 +23,9 @@ TEST(angle_test, conversion)
 
     angle b = angle::rad(1);
     EXPECT_FLOAT_EQ(b.deg(), 57.29578);
+
+    angle c = angle::turns(1);
+    EXPECT_FLOAT_EQ(c.deg(), 360.0);
 }
 
 TEST(angle_test, plus_minus)

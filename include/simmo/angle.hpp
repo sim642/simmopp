@@ -29,6 +29,11 @@ public:
         return angle(deg_value / 180 * M_PI);
     }
 
+    constexpr static angle turns(value_type turns_value)
+    {
+        return angle(turns_value * 2 * M_PI);
+    }
+
     value_type rad() const
     {
         return rad_value;
@@ -37,6 +42,11 @@ public:
     value_type deg() const
     {
         return rad_value / M_PI * 180;
+    }
+
+    value_type turns() const
+    {
+        return rad_value / (2 * M_PI);
     }
 
     auto operator +() const
