@@ -120,13 +120,13 @@ TEST(vector_test, assign_mult_div)
 TEST(vector_test, norm)
 {
     vector1i v1(7);
-    EXPECT_FLOAT_EQ(norm(v1), 7);
+    EXPECT_DOUBLE_EQ(norm(v1), 7);
 
     vector2i v2(1, 2);
-    EXPECT_FLOAT_EQ(norm(v2), sqrt(1 * 1 + 2 * 2));
+    EXPECT_DOUBLE_EQ(norm(v2), sqrt(1 * 1 + 2 * 2));
 
     vector3i v3(5, 6, -8);
-    EXPECT_FLOAT_EQ(norm(v3), sqrt(5 * 5 + 6 * 6 + 8 * 8));
+    EXPECT_DOUBLE_EQ(norm(v3), sqrt(5 * 5 + 6 * 6 + 8 * 8));
 }
 
 TEST(vector_test, dot)
