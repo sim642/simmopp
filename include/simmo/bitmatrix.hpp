@@ -5,6 +5,8 @@
 #include <type_traits>
 #include <utility>
 #include <algorithm>
+#include <initializer_list>
+#include <stdexcept>
 
 namespace simmo
 {
@@ -57,6 +59,26 @@ public:
     explicit bitmatrix(bits_t bits) : bits(bits & mask)
     {
 
+    }
+
+    bitmatrix(std::initializer_list<std::initializer_list<bool>> matrix_initializer) : bitmatrix()
+    {
+        if (matrix_initializer.size() > M)
+            throw std::out_of_range("bitmatrix: matrix initializer list too large");
+
+        auto matrix_it = matrix_initializer.begin();
+        for (dimsize_t row = 0; matrix_it != matrix_initializer.end(); ++matrix_it, ++row)
+        {
+            auto &row_initializer = *matrix_it;
+            if (row_initializer.size() > N)
+                throw std::out_of_range("bitmatrix: row initializer list too large");
+
+            auto row_it = row_initializer.begin();
+            for (dimsize_t col = 0; row_it != row_initializer.end(); ++row_it, ++col)
+            {
+                write(row, col, *row_it);
+            }
+        }
     }
 
     bitmatrix& operator =(const bitmatrix &other)
