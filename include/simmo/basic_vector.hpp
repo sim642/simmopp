@@ -128,7 +128,6 @@ namespace comparison
 namespace std
 {
 
-template<>
 template<typename T, size_t N>
 struct hash<simmo::basic_vector<T, N>>
 {

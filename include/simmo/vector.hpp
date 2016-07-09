@@ -160,7 +160,6 @@ typedef vector<double, 3> vector3d;
 namespace std
 {
 
-template<>
 template<typename T, size_t N>
 struct hash<simmo::vector<T, N>>
 {

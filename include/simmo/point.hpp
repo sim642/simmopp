@@ -93,7 +93,6 @@ typedef point<double, 3> point3d;
 namespace std
 {
 
-template<>
 template<typename T, size_t N>
 struct hash<simmo::point<T, N>>
 {
